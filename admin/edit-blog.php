@@ -7,34 +7,48 @@ include("../middleware/adminMiddleware.php");
 <div class="container-fluid">   
         <div class="row">
             <div class="col-md-12">
+            <?php
+                if(isset($_GET['id']))
+                {
+                    $id = $_GET['id'];
+                    $blog= getByID("blog", $id);
+
+                    if(mysqli_num_rows($blog) >0)
+                    {
+                        $blog = mysqli_fetch_array($blog);
+                        ?>
                 <div class="card">
                     <div class="card-header">
-                        <h4>Add blog</h4>
+                        <h4>Edit blog: <?= $blog['title'] ?></h4>
                     </div>
                     <div class="card-body">
                         <form action="code.php" method="POST" enctype="multipart/form-data"><!-- Uploads image -->
 
                             <div class="row">
+                                <input type="hidden" name="id" value="<?= $blog['id'] ?>">
                                 <div class="col-md-12">
                                     <label for=""><b>Title</b></label>
-                                    <input type="text" id="full-name" required name="title" placeholder="Enter Blog Name" class="form-control"> 
+                                    <input type="text" id="full-name" required name="title" placeholder="Enter Blog Name" value="<?= $blog['title'] ?>" class="form-control"> 
                                 </div>                               
                                 <div class="col-md-12">
                                 <br>
                                     <label for=""><b>Slug</b></label>
-                                    <input type="text" id="slug-name" required name="slug" placeholder="Enter slug" class="form-control">
+                                    <input type="text" id="slug-name" required name="slug" placeholder="Enter slug" value="<?= $blog['slug'] ?>" class="form-control">
                                 </div>                                                        
                                 <div class="col-md-12">
                                 <br>
                                     <label for=""><b>Image description</b></label>
-                                    <input type="file" required name="image" class="form-control">
+                                    <input type="file" name="image" class="form-control">
+                                    <label for="">Current Image</label>
+                                    <input type="hidden" name="old_image" value="<?=$blog['img']?>">
+                                    <img src="../images/<?= $blog['img']?>" height="50px" width="50px" alt="">
                                 </div>
                                 <div class="col-md-12">
                                 <br>
                                     <label for=""><b>Content</b></label>
-                                    <textarea name="content" id="myTextarea" style="height: 500px"></textarea>
+                                    <textarea name="content" id="myTextarea" style="height: 500px; width: 100%"><?= $blog['content'] ?></textarea>
                                 </div>
-                                <input type="hidden" name="add_blog_btn" value="true">
+                                <input type="hidden" name="update_blog_btn" value="true">
                                 <div class="col-md-12">
                                     <br>
                                     <button type="submit" class="btn btn-primary">Create blog</button>
@@ -43,6 +57,16 @@ include("../middleware/adminMiddleware.php");
                         </form>
                     </div>
                 </div>
+                <?php
+                }else
+                    {
+                        echo "Blog not found";
+                    }
+                }else
+                {
+                    echo "Id missing from url";
+                }
+                    ?>
             </div>
         </div>
     </form>
