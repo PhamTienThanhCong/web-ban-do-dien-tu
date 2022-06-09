@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("../middleware/adminMiddleware.php");
 include("../config/dbcon.php");
 include("../functions/myfunctions.php");
 

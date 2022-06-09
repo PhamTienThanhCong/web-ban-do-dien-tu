@@ -1,5 +1,6 @@
 <?php 
 session_start();
+include("../middleware/adminMiddleware.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">

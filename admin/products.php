@@ -1,7 +1,5 @@
 <?php 
 include ("../admin/includes/header.php");
-include("../middleware/adminMiddleware.php");
-
 ?>
 <body>
 <div class="container-fluid">

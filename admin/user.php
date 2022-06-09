@@ -1,6 +1,5 @@
 <?php
 include("../admin/includes/header.php");
-include("../middleware/adminMiddleware.php");
 
 // $users= getAll("users");
 $users = getAllUsers(1);

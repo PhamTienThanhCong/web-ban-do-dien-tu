@@ -1,6 +1,5 @@
 <?php 
 include ("../admin/includes/header.php");
-include("../middleware/adminMiddleware.php");
 ?>
 <script src="./assets/js/tinymce.min.js" referrerpolicy="origin"></script>
 <body>
