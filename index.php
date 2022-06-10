@@ -1,6 +1,10 @@
 <?php 
 session_start();
 include("./includes/header.php");
+
+$bestSellingProducts    =   getBestSelling(8);
+$LatestProducts         =   getLatestProducts(8);
+$blogs                  =   getBlogs(0, "");
 ?>
 <body>
 
@@ -23,81 +27,44 @@ include("./includes/header.php");
     <div class="hero">
         <div class="slider">
             <div class="container">
-                <!-- slide item -->
-                <div class="slide active">
-                    <div class="info">
-                        <div class="info-content">
-                            <h3 class="top-down">
-                                JBL TUNE 750TNC
-                            </h3>
-                            <h2 class="top-down trans-delay-0-2">
-                                Next-gen design
-                            </h2>
-                            <p class="top-down trans-delay-0-4">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati dolor commodi dignissimos culpa, eaque eos necessitatibus possimus veniam, cupiditate rerum deleniti? Libero, ducimus error? Beatae velit dolore sint explicabo! Fugit.
-                            </p>
-                            <div class="top-down trans-delay-0-6">
-                                <button class="btn-flat btn-hover">
-                                    <span>shop now</span>
-                                </button>
+            <?php
+                $count = 0; 
+                foreach($bestSellingProducts as $product) { 
+                if ($count == 3){
+                    break;
+                }
+            ?>
+                    <!-- slide item -->
+                    <div class="slide">
+                        <div class="info">
+                            <div class="info-content">
+                                <h3 class="top-down">
+                                    <?= $product['name'] ?>
+                                </h3>
+                                <h2 class="top-down trans-delay-0-2">
+                                    <?= $product['name'] ?>
+                                </h2>
+                                <p class="top-down trans-delay-0-4">
+                                    <?= $product['small_description'] ?>
+                                </p>
+                                <div class="top-down trans-delay-0-6">
+                                    <a href="./product-detail.php?slug=<?= $product['slug'] ?>">
+                                        <button class="btn-flat btn-hover">
+                                            <span>shop now</span>
+                                        </button>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="img top-down">
-                        <img src="./images/JBL_E55BT_KEY_RED_6063_FS_x1-1605x1605px.webp" alt="">
-                    </div>
-                </div>
-                <!-- end slide item -->
-                <!-- slide item -->
-                <div class="slide">
-                    <div class="info">
-                        <div class="info-content">
-                            <h3 class="top-down">
-                                JBL Quantum ONE
-                            </h3>
-                            <h2 class="top-down trans-delay-0-2">
-                                Ipsum dolor
-                            </h2>
-                            <p class="top-down trans-delay-0-4">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. A optio, voluptatum aperiam nobis quis maxime corporis porro alias soluta sunt quae consectetur aliquid blanditiis perspiciatis labore cumque, ullam, quam eligendi!
-                            </p>
-                            <div class="top-down trans-delay-0-6">
-                                <button class="btn-flat btn-hover">
-                                    <span>shop now</span>
-                                </button>
-                            </div>
+                        <div class="img right-left">
+                            <img src="./images/<?= $product['image'] ?>" alt="">
                         </div>
                     </div>
-                    <div class="img right-left">
-                        <img src="./images/JBL_E55BT_KEY_BLACK_6175_FS_x1-1605x1605px.png" alt="">
-                    </div>
-                </div>
-                <!-- end slide item -->
-                <!-- slide item -->
-                <div class="slide">
-                    <div class="info">
-                        <div class="info-content">
-                            <h3 class="top-down">
-                                JBL JR 310BT
-                            </h3>
-                            <h2 class="top-down trans-delay-0-2">
-                                Consectetur Elit
-                            </h2>
-                            <p class="top-down trans-delay-0-4">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo aut fugiat, libero magnam nemo inventore in tempora beatae officiis temporibus odit deserunt molestiae amet quam, asperiores, iure recusandae nulla labore!
-                            </p>
-                            <div class="top-down trans-delay-0-6">
-                                <button class="btn-flat btn-hover">
-                                    <span>shop now</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="img left-right">
-                        <img src="./images/JBL_JR 310BT_Product Image_Hero_Skyblue.png" alt="">
-                    </div>
-                </div>
-                <!-- end slide item -->
+                    <!-- end slide item -->
+            <?php
+                $count ++;
+                } 
+            ?>
             </div>
             <!-- slider controller -->
             <button class="slide-controll slide-next">
@@ -114,33 +81,28 @@ include("./includes/header.php");
     <!-- promotion section -->
     <div class="promotion">
         <div class="row">
+        <?php
+            $count = 0; 
+            foreach($LatestProducts as $product) { 
+            if ($count == 3){
+                break;
+            }
+        ?>
             <div class="col-4 col-md-12 col-sm-12">
                 <div class="promotion-box">
                     <div class="text">
-                        <h3>Headphone & Earbuds</h3>
-                        <button class="btn-flat btn-hover"><span>shop collection</span></button>
+                        <h3><?= $product['name'] ?></h3>
+                        <a href="./product-detail.php?slug=<?= $product['slug'] ?>">
+                            <button class="btn-flat btn-hover"><span>shop collection</span></button>
+                        </a>
                     </div>
-                    <img src="./images/JBLHorizon_001_dvHAMaster.png" alt="">
+                    <img src="./images/<?= $product['image'] ?>" alt="">
                 </div>
             </div>
-            <div class="col-4 col-md-12 col-sm-12">
-                <div class="promotion-box">
-                    <div class="text">
-                        <h3>JBL Quantum Series</h3>
-                        <button class="btn-flat btn-hover"><span>shop collection</span></button>
-                    </div>
-                    <img src="./images/kisspng-beats-electronics-headphones-apple-beats-studio-red-headphones.png" alt="">
-                </div>
-            </div>
-            <div class="col-4 col-md-12 col-sm-12">
-                <div class="promotion-box">
-                    <div class="text">
-                        <h3>True Wireless Earbuds</h3>
-                        <button class="btn-flat btn-hover"><span>shop collection</span></button>
-                    </div>
-                    <img src="./images/JBL_TUNE220TWS_ProductImage_Pink_ChargingCaseOpen.png" alt="">
-                </div>
-            </div>
+        <?php
+            $count ++;
+            } 
+        ?>
         </div>
     </div>
     <!-- end promotion section -->
@@ -152,15 +114,20 @@ include("./includes/header.php");
                 <h2>Latest product</h2>
             </div>
             <div class="row" id="latest-products">
+                <?php
+                    foreach($LatestProducts as $product) { 
+                ?>
                 <div class="col-3 col-md-6 col-sm-12">
                     <div class="product-card">
                         <div class="product-card-img">
-                            <img src="./images/JBL_Quantum_400_Product Image_Hero 02.png" alt="">
-                            <img src="./images/JBL_Quantum_400_Product Image_Hero Mic Up.webp" alt="">
+                            <img src="./images/<?= $product['image'] ?>" alt="">
+                            <img src="./images/<?= $product['image'] ?>" alt="">
                         </div>
                         <div class="product-card-info">
                             <div class="product-btn">
-                                <button class="btn-flat btn-hover btn-shop-now">shop now</button>
+                                <a href="./product-detail.php?slug=<?= $product['slug'] ?>">
+                                    <button class="btn-flat btn-hover btn-shop-now">shop now</button>
+                                </a>
                                 <button class="btn-flat btn-hover btn-cart-add">
                                     <i class='bx bxs-cart-add'></i>
                                 </button>
@@ -169,15 +136,16 @@ include("./includes/header.php");
                                 </button>
                             </div>
                             <div class="product-card-name">
-                                JBL Quantum 400
+                                <?= $product['name'] ?>
                             </div>
                             <div class="product-card-price">
-                                <span><del>$400</del></span>
-                                <span class="curr-price">$200</span>
+                                <span><del>$<?= $product['original_price'] ?></del></span>
+                                <span class="curr-price">$<?= $product['selling_price'] ?></span>
                             </div>
                         </div>
-                    </div>
+                    </div>  
                 </div>
+                <?php } ?>
             </div>
             <div class="section-footer">
                 <a href="./products.php" class="btn-flat btn-hover">view all</a>
@@ -190,20 +158,29 @@ include("./includes/header.php");
     <div class="bg-second">
         <div class="section container">
             <div class="row">
+            <?php
+                foreach($bestSellingProducts as $product) { 
+            ?>
                 <div class="col-4 col-md-4">
                     <div class="sp-item-img">
-                        <img src="./images/kisspng-beats-electronics-headphones-apple-beats-studio-red-headphones.png" alt="">
+                        <img src="./images/<?= $product['image'] ?>" alt="">
                     </div>
                 </div>
                 <div class="col-7 col-md-8">
                     <div class="sp-item-info">
-                        <div class="sp-item-name">JBL TUNE 750TNC</div>
+                        <div class="sp-item-name"><?= $product['name']?></div>
                         <p class="sp-item-description">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore dignissimos itaque et eaque quod harum vero autem? Reprehenderit enim non voluptate! Qui provident modi est non eius ratione, debitis iure.
+                            <?= $product['small_description']?>
                         </p>
-                        <button class="btn-flat btn-hover">shop now</button>
+                        <a href="./product-detail.php?slug=<?= $product['slug'] ?>">
+                            <button class="btn-flat btn-hover">shop now</button>
+                        </a>
                     </div>
                 </div>
+            <?php 
+                break; 
+                }
+            ?>
             </div>
         </div>
     </div>
@@ -216,15 +193,20 @@ include("./includes/header.php");
                 <h2>best selling</h2>
             </div>
             <div class="row" id="best-products">
+                <?php
+                    foreach($bestSellingProducts as $product) { 
+                ?>
                 <div class="col-3 col-md-6 col-sm-12">
                     <div class="product-card">
                         <div class="product-card-img">
-                            <img src="./images/JBL_Quantum_400_Product Image_Hero 02.png" alt="">
-                            <img src="./images/JBL_Quantum_400_Product Image_Hero Mic Up.webp" alt="">
+                            <img src="./images/<?= $product['image']?>" alt="">
+                            <img src="./images/<?= $product['image']?>" alt="">
                         </div>
                         <div class="product-card-info">
                             <div class="product-btn">
-                                <button class="btn-flat btn-hover btn-shop-now">shop now</button>
+                                <a href="./product-detail.php?slug=<?= $product['slug'] ?>">
+                                    <button class="btn-flat btn-hover btn-shop-now">shop now</button>
+                                </a>
                                 <button class="btn-flat btn-hover btn-cart-add">
                                     <i class='bx bxs-cart-add'></i>
                                 </button>
@@ -233,18 +215,19 @@ include("./includes/header.php");
                                 </button>
                             </div>
                             <div class="product-card-name">
-                                JBL Quantum 400
+                                <?= $product['name']?>
                             </div>
                             <div class="product-card-price">
-                                <span><del>$350</del></span>
-                                <span class="curr-price">$200</span>
+                                <span><del>$<?= $product['original_price']?></del></span>
+                                <span class="curr-price">$<?= $product['selling_price']?></span>
                             </div>
                         </div>
                     </div>
                 </div>
+                <?php } ?>
             </div>
             <div class="section-footer">
-                <a href="./products.html" class="btn-flat btn-hover">view all</a>
+                <a href="./products.php" class="btn-flat btn-hover">view all</a>
             </div>
         </div>
     </div>
@@ -256,36 +239,50 @@ include("./includes/header.php");
             <div class="section-header">
                 <h2>latest blog</h2>
             </div>
-            <div class="blog">
-                <div class="blog-img">
-                    <img src="./images/JBL_Quantum400_Lifestyle1.png" alt="">
-                </div>
-                <div class="blog-info">
-                    <div class="blog-title">
-                        Lorem ipsum dolor sit amet
+            <?php
+                $count = 0; 
+                foreach($blogs as $blog) { 
+                if ($count == 2){
+                    break;
+                }
+            ?>
+            <?php if ($count == 0) { ?>
+                <div class="blog">
+                    <div class="blog-img">
+                        <img src="./images/<?= $blog['img'] ?>" alt="">
                     </div>
-                    <div class="blog-preview">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi, eligendi dolore. Sapiente omnis numquam mollitia asperiores animi, veritatis sint illo magnam, voluptatum labore, quam ducimus! Nisi doloremque praesentium laudantium repellat.
+                    <div class="blog-info">
+                        <div class="blog-title">
+                            <?= $blog['title'] ?>
+                        </div>
+                        <div class="blog-preview">
+                            <?= $blog['small_content'] ?>
+                        </div>
+                        <button class="btn-flat btn-hover">read more</button>
                     </div>
-                    <button class="btn-flat btn-hover">read more</button>
                 </div>
-            </div>
-            <div class="blog row-revere">
-                <div class="blog-img">
-                    <img src="./images/JBL_TUNE220TWS_Lifestyle_black.png" alt="">
-                </div>
-                <div class="blog-info">
-                    <div class="blog-title">
-                        Lorem ipsum dolor sit amet
+            <?php } else { ?>
+                <div class="blog row-revere">
+                    <div class="blog-img">
+                        <img src="./images/<?= $blog['img'] ?>" alt="">
                     </div>
-                    <div class="blog-preview">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi, eligendi dolore. Sapiente omnis numquam mollitia asperiores animi, veritatis sint illo magnam, voluptatum labore, quam ducimus! Nisi doloremque praesentium laudantium repellat.
+                    <div class="blog-info">
+                        <div class="blog-title">
+                            <?= $blog['title'] ?>
+                        </div>
+                        <div class="blog-preview">
+                            <?= $blog['small_content'] ?>
+                        </div>
+                        <button class="btn-flat btn-hover">read more</button>
                     </div>
-                    <button class="btn-flat btn-hover">read more</button>
                 </div>
-            </div>
+            <?php
+                }
+                $count ++;
+            } 
+            ?>
             <div class="section-footer">
-                <a href="#" class="btn-flat btn-hover">view all</a>
+                <a href="./blog.php" class="btn-flat btn-hover">view all</a>
             </div>
         </div>
     </div>

@@ -1,6 +1,11 @@
-<?php 
+<?php
+
 include("./includes/header.php");
+
+$products   =   getLatestProducts(10, $page, $type, $search);
+
 ?>
+
 <body>
     <!-- products content -->
     <div class="bg-main">
@@ -24,22 +29,19 @@ include("./includes/header.php");
                             </span>
                             <ul class="filter-list">
                                 <?php
-                                    $categories= getAllActive("categories");
-                                    
-                                    if(mysqli_num_rows($categories)>0)
-                                    {
-                                        foreach($categories as $item)
-                                        {
-                                            ?>
-                                                <li><a href="#"><?= $item['name']; ?></a></li> 
-                                            <?php
-                                        }
-                                    }else
-                                    {
-                                        echo "no";
-                                    }
+                                $categories = getAllActive("categories");
+
+                                if (mysqli_num_rows($categories) > 0) {
+                                    foreach ($categories as $item) {
                                 ?>
-                                                              
+                                        <li><a href="./products.php?type=<?= $item['slug']?>"><?= $item['name']; ?></a></li>
+                                <?php
+                                    }
+                                } else {
+                                    echo "no";
+                                }
+                                ?>
+
                             </ul>
                         </div>
                         <div class="box">
@@ -170,7 +172,36 @@ include("./includes/header.php");
                             <button id="filter-toggle">filter</button>
                         </div>
                         <div class="box">
-                            <div class="row" id="products"></div>
+                            <div class="row" id="products">
+                            <?php foreach ($products as $product) { ?>
+                                <div class="col-4 col-md-6 col-sm-12">
+                                    <div class="product-card">
+                                        <div class="product-card-img">
+                                            <img src="./images/<?= $product['image'] ?>" alt="">
+                                            <img src="./images/<?= $product['image'] ?>" alt="">
+                                        </div>
+                                        <div class="product-card-info">
+                                            <div class="product-btn">
+                                                <a href="./product-detail.php?slug=<?= $product['slug'] ?>" class="btn-flat btn-hover btn-shop-now">shop now</a>
+                                                <button class="btn-flat btn-hover btn-cart-add">
+                                                    <i class='bx bxs-cart-add'></i>
+                                                </button>
+                                                <button class="btn-flat btn-hover btn-cart-add">
+                                                    <i class='bx bxs-heart'></i>
+                                                </button>
+                                            </div>
+                                            <div class="product-card-name">
+                                                <?= $product['name'] ?>
+                                            </div>
+                                            <div class="product-card-price">
+                                                <span><del>$<?= $product['original_price'] ?></del></span>
+                                                <span class="curr-price">$<?= $product['selling_price'] ?></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                            </div>
                         </div>
                         <div class="box">
                             <ul class="pagination">
@@ -196,4 +227,5 @@ include("./includes/header.php");
     <script src="./assets/js/app.js"></script>
     <script src="./assets/js/products.js"></script>
 </body>
+
 </html>

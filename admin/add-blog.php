@@ -30,6 +30,11 @@ include ("../admin/includes/header.php");
                                 </div>
                                 <div class="col-md-12">
                                 <br>
+                                    <label class="mb-0"><b>Small Content</b></label>
+                                    <textarea type="text" style="height: 150px" required="" name="small_content" placeholder="Enter Small Content" class="form-control mb-2"></textarea>
+                                </div>
+                                <div class="col-md-12">
+                                <br>
                                     <label for=""><b>Content</b></label>
                                     <textarea name="content" id="myTextarea" style="height: 500px"></textarea>
                                 </div>

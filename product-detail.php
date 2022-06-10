@@ -1,4 +1,4 @@
-<?php include("./includes/header.php")?>
+<?php include("./includes/header.php") ?>;
 
 <body>
     <!-- product-detail content -->
@@ -10,24 +10,38 @@
                     <span><i class='bx bxs-chevrons-right'></i></span>
                     <a href="./products.php">all products</a>
                     <span><i class='bx bxs-chevrons-right'></i></span>
-                    <a href="./product-detail.php">JBL Tune 750TNC</a>
+                    <a href="#">View Product</a>
                 </div>
             </div>
+            
+            <?php
+                if(isset($_GET['slug']))
+                {
+                    $slug       = $_GET['slug'];
+                    $product    = getBySlug("products", $slug);
+
+                    if(mysqli_num_rows($product) >0)
+                    {
+                    $product        = mysqli_fetch_array($product);
+                    $categoryName   = getByID("categories", $product['category_id']);
+                    $categoryName   = mysqli_fetch_array($categoryName);
+            ?>
+
             <div class="row product-row">
                 <div class="col-5 col-md-12">
                     <div class="product-img" id="product-img">
-                        <img src="./images/kisspng-beats-electronics-headphones-apple-beats-studio-red-headphones.png" alt="">
+                        <img src="./images/<?= $product['image'] ?>" alt="">
                     </div>
                     <div class="box">
                         <div class="product-img-list">
                             <div class="product-img-item">
-                                <img src="./images/kisspng-beats-electronics-headphones-apple-beats-studio-red-headphones.png" alt="">
+                                <img src="./images/<?= $product['image'] ?>" alt="">
                             </div>
                             <div class="product-img-item">
-                                <img src="./images/JBL-Endurance-Sprint_Alt_Red-1605x1605px.webp" alt="">
+                                <img src="./images/<?= $product['image'] ?>" alt="">
                             </div>
                             <div class="product-img-item">
-                                <img src="./images/JBL_Quantum_400_Product Image_Hero 02.png" alt="">
+                                <img src="./images/<?= $product['image'] ?>" alt="">
                             </div>
                         </div>
                     </div>
@@ -35,11 +49,11 @@
                 <div class="col-7 col-md-12">
                     <div class="product-info">
                         <h1>
-                            JBL TUNE 750TNC
+                            <?= $product['name'] ?>
                         </h1>
                         <div class="product-info-detail">
                             <span class="product-info-detail-title">Brand:</span>
-                            <a href="#">JBL</a>
+                            <a href="#"><?= $categoryName['name'] ?></a>
                         </div>
                         <div class="product-info-detail">
                             <span class="product-info-detail-title">Rated:</span>
@@ -52,7 +66,7 @@
                             </span>
                         </div>
                         <p class="product-description">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo libero alias officiis dolore doloremque eveniet culpa dignissimos, itaque, cum animi excepturi sed veritatis asperiores soluta, nisi atque quae illum. Ipsum.
+                            <?= nl2br($product['small_description']) ?>
                         </p>
                         <div class="product-info-price">$2345</div>
                         <div class="product-quantity-wrapper">
@@ -75,24 +89,9 @@
                     description
                 </div>
                 <div class="product-detail-description">
-                    <button class="btn-flat btn-hover btn-view-description" id="view-all-description">
-                        view all
-                    </button>
-                    <div class="product-detail-description-content">
                         <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit laudantium obcaecati odit dolorem, doloremque accusamus esse neque ipsa dignissimos saepe quisquam tempore perferendis deserunt sapiente! Recusandae illum totam earum ratione.
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam incidunt maxime rerum reprehenderit voluptas asperiores ipsam quas consequuntur maiores, at odit obcaecati vero sunt! Reiciendis aperiam perferendis consequuntur odio quas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut quaerat eum veniam doloremque nihil repudiandae odio ratione culpa libero tempora. Expedita, quo molestias. Minus illo quis dignissimos aliquid sapiente error!
+                            <?= nl2br($product['description']) ?>
                         </p>
-                        <img src="./images/JBL_Quantum_400_Product Image_Hero 02.png" alt="">
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis accusantium officia, quae fuga in exercitationem aliquam labore ex doloribus repellendus beatae facilis ipsam. Veritatis vero obcaecati iste atque aspernatur ducimus.
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat quam praesentium id sit amet magnam ad, dolorum, cumque iste optio itaque expedita eius similique, ab adipisci dicta. Quod, quibusdam quas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, in corrupti ipsam sint error possimus commodi incidunt suscipit sit voluptatum quibusdam enim eligendi animi deserunt recusandae earum natus voluptas blanditiis?
-                        </p>
-                        <img src="./images/kisspng-beats-electronics-headphones-apple-beats-studio-red-headphones.png" alt="">
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi ullam quam fugit veniam ipsum recusandae incidunt, ex ratione, magnam labore ad tenetur officia! In, totam. Molestias sapiente deserunt animi porro?
-                        </p>
-                    </div>
                 </div>
             </div>
             <div class="box">
@@ -220,6 +219,18 @@
                 <div class="row" id="related-products"></div>
             </div>
         </div>
+        <?php
+                }
+                else
+                    {
+                        echo '<div class="box-header" style="text-align: center;"> Product not found </div>';
+                    }
+                }
+                else
+                {
+                    echo '<div class="box-header" style="text-align: center;"> Id missing from url </div>';
+                }
+                    ?>
     </div>
     <!-- end product-detail content -->
     <?php include("./includes/footer.php") ?>

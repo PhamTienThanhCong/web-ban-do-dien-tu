@@ -215,9 +215,10 @@ else if(isset($_POST['delete_product_btn']))
 }
 else if(isset($_POST['add_blog_btn']))
 {
-    $title= $_POST['title'];
-    $slug= $_POST['slug']  . "-" . rand(10,99);
-    $content= addslashes($_POST['content']);
+    $title          = $_POST['title'];
+    $slug           = $_POST['slug']  . "-" . rand(10,99);
+    $small_content  = $_POST['small_content'];
+    $content        = addslashes($_POST['content']);
 
     $image= $_FILES['image']['name'];
 
@@ -227,8 +228,8 @@ else if(isset($_POST['add_blog_btn']))
 
     if($title != "" && $slug != "" && $content !="")
     {
-        $blog_query= "INSERT INTO blog (title,slug,img,content) VALUES 
-        ('$title', '$slug', '$filename', '$content')";
+        $blog_query= "INSERT INTO blog (title,slug,img,small_content,content) VALUES 
+        ('$title', '$slug', '$filename', '$small_content', '$content')";
 
         $blog_query_run=mysqli_query($conn,$blog_query);
 
@@ -247,10 +248,11 @@ else if(isset($_POST['add_blog_btn']))
 }
 else if(isset($_POST['update_blog_btn'])){
     
-    $id         = $_POST['id'];
-    $title      = $_POST['title'];
-    $slug       = $_POST['slug']  . "-" . rand(10,99);
-    $content    = addslashes($_POST['content']);
+    $id             = $_POST['id'];
+    $title          = $_POST['title'];
+    $slug           = $_POST['slug']  . "-" . rand(10,99);
+    $small_content  = $_POST['small_content'];
+    $content        = addslashes($_POST['content']);
 
     $path   =   "../images"; 
 
@@ -272,10 +274,11 @@ else if(isset($_POST['update_blog_btn'])){
     $update_blog_query= "UPDATE
                             `blog`
                         SET
-                            `title`     = '$title',
-                            `slug`      = '$slug',
-                            `img`       = '$update_filename',
-                            `content`   = '$content'
+                            `title`         = '$title',
+                            `slug`          = '$slug',
+                            `img`           = '$update_filename',
+                            `small_content` = '$small_content',
+                            `content`       = '$content'
                         WHERE
                             `id` = '$id'";
 

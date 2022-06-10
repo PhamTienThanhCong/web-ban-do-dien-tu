@@ -42,6 +42,11 @@ include ("../admin/includes/header.php");
                                     <input type="hidden" name="old_image" value="<?=$blog['img']?>">
                                     <img src="../images/<?= $blog['img']?>" height="50px" width="50px" alt="">
                                 </div>
+                                <br>
+                                <div class="col-md-12">
+                                    <label class="mb-0"><b>Small Content</b></label>
+                                    <textarea type="text" required="" style="height: 150px" name="small_content" placeholder="Enter Small Content" class="form-control mb-2"><?= $blog['small_content'] ?></textarea>
+                                </div>
                                 <div class="col-md-12">
                                 <br>
                                     <label for=""><b>Content</b></label>
@@ -50,7 +55,7 @@ include ("../admin/includes/header.php");
                                 <input type="hidden" name="update_blog_btn" value="true">
                                 <div class="col-md-12">
                                     <br>
-                                    <button type="submit" class="btn btn-primary">Create blog</button>
+                                    <button type="submit" class="btn btn-primary">Save blog</button>
                                 </div>
                             </div>
                         </form>

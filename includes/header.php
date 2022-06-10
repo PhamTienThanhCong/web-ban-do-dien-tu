@@ -1,5 +1,12 @@
 <?php
 include("./functions/userfunctions.php");
+$search =   "";
+$page   =   0;
+$type   =   "";
+
+if (isset($_GET["search"])){ $search    = $_GET["search"]; }
+if (isset($_GET["type"])){ $type        = $_GET["type"]; }
+if (isset($_GET["page"])){ $page        = $_GET["page"]; }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,10 +56,13 @@ include("./functions/userfunctions.php");
             <div class="bg-main">
                 <div class="mid-header container">
                     <a href="#" class="logo">ATShop</a>
-                    <div class="search">
-                        <input type="text" placeholder="Search">
-                        <i class='bx bx-search-alt'></i>
-                    </div>
+                    <form class="search" method="get">
+                        <input name="search" type="text" value="<?= $search ?>" placeholder="Search">
+                        <button type="submit" style="display:inline" >
+                            <i class='bx bx-search-alt'></i>
+                        </button>
+                        
+                    </form>
                     
                     <ul class="user-menu">
                         <li><a href="#"><i class='bx bx-bell'></i></a></li>
@@ -67,7 +77,7 @@ include("./functions/userfunctions.php");
                                     <div class="mega-content" style="width: auto;display: inline-block;right: 0;">
                                             <div class="row">
                                                 <div class="box">
-                                                    <h3>Hello <?= $_SESSION['auth_user']['email'] ?>!</h3>
+                                                    <h3>Hello <?= $_SESSION['auth_user']['name'] ?>!</h3>
                                                         <ul>   
                                                             <li><a href="user-profile.php">Profile</a></li>
                                                             <li><a href="#">Order</a></li>
@@ -124,7 +134,7 @@ include("./functions/userfunctions.php");
                                                     foreach($categories as $item)
                                                     {
                                                         ?>
-                                                            <li><a href="#"><?= $item['name']; ?></a></li> 
+                                                            <li><a href="./products.php?type=<?= $item['slug'] ?>"><?= $item['name']; ?></a></li> 
                                                         <?php
                                                     }
                                                 }else

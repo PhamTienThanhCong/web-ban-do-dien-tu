@@ -11,7 +11,7 @@ $page= substr($_SERVER['SCRIPT_NAME'], strripos($_SERVER['SCRIPT_NAME'],"/")+1);
       </a>
     </div>
     <hr class="horizontal light mt-0 mb-2">
-    <div class="collapse navbar-collapse  w-auto" id="sidenav-collapse-main" style="height: 80vh">
+    <div class="collapse navbar-collapse  w-auto" id="sidenav-collapse-main" style="height: 75vh">
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link text-white <?= $page== "index.php"? 'active bg-gradient-primary':'' ?>" href="../admin/index.php">
