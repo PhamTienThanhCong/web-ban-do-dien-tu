@@ -49,7 +49,6 @@ function getBestSelling($numberGet){
 }
 function getLatestProducts($numberGet,$page = 0,$type = "",$search=""){
     global $conn;
-    $totalProducts  = totalValue('products');
     $page_extra = $numberGet * $page;
 
     if ($type != ""){
@@ -70,7 +69,6 @@ function getLatestProducts($numberGet,$page = 0,$type = "",$search=""){
 }
 function getBlogs($page, $keyWold){
     global $conn;
-    $totalBlog  = totalValue('blog');
     $page_extra = 10 * $page;
     $query =    "SELECT * FROM `blog` 
                 WHERE `title` LIKE '%$keyWold%'
