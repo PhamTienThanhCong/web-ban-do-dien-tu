@@ -1,12 +1,15 @@
 <?php
+session_start();
 include("./functions/userfunctions.php");
 $search =   "";
-$page   =   0;
+$page   =   1;
 $type   =   "";
 
 if (isset($_GET["search"])){ $search    = $_GET["search"]; }
 if (isset($_GET["type"])){ $type        = $_GET["type"]; }
 if (isset($_GET["page"])){ $page        = $_GET["page"]; }
+
+$page = $page - 1;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -149,7 +152,7 @@ if (isset($_GET["page"])){ $page        = $_GET["page"]; }
                             </div>
                         </li>
                         <!-- end mega menu -->
-                        <li><a href="#">blog</a></li>
+                        <li><a href="./blog.php">blog</a></li>
                         <li><a href="#">contact</a></li>
                     </ul>
                 </div>

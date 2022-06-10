@@ -1,7 +1,4 @@
 <?php 
-session_start();
-
-
 if (!isset($_SESSION['auth'])){
     include("./functions/userfunctions.php");
     redirect("./login.php", "you need login first");

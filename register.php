@@ -1,5 +1,4 @@
 <?php 
-session_start();
 include("./includes/header.php");
 ?>
 <link rel="stylesheet" href="./assets/css/bootstrap.min.css">

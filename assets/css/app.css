@@ -622,6 +622,48 @@ ul.devided > li:last-child {
     margin-bottom: 50px;
 }
 
+.blog-page {
+    display: flex;
+    margin-bottom: 60px;
+}
+
+.blog-img-page {
+    width: 500px;
+    height: 300px;
+    overflow: hidden;
+}
+
+.blog-img-page img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.blog-info-page {
+    width: 60%;
+    position: relative;
+}
+
+.blog-info-page {
+    padding: 50px;
+    padding-top: 0px;
+}
+
+.blog-title-page {
+    font-size: 25px;
+    margin-bottom: 25px;
+}
+
+.blog-preview-page {
+    text-align: justify;
+    margin-bottom: 25px;
+}
+.btn-read-page{
+    position: absolute;
+    bottom: 10px;
+}
+
 footer {
     padding: 100px 0;
 }

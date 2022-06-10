@@ -2,7 +2,7 @@
 
 include("./includes/header.php");
 
-$products   =   getLatestProducts(10, $page, $type, $search);
+$products   =   getLatestProducts(9, $page, $type, $search);
 
 ?>
 
@@ -206,11 +206,11 @@ $products   =   getLatestProducts(10, $page, $type, $search);
                         <div class="box">
                             <ul class="pagination">
                                 <li><a href="#"><i class='bx bxs-chevron-left'></i></a></li>
-                                <li><a href="#" class="active">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
+                                <li><a href="?search=&page=1" class="active">1</a></li>
+                                <li><a href="?search=&page=2">2</a></li>
+                                <li><a href="?search=&page=3">3</a></li>
+                                <li><a href="?search=&page=4">4</a></li>
+                                <li><a href="?search=&page=5">5</a></li>
                                 <li><a href="#"><i class='bx bxs-chevron-right'></i></a></li>
                             </ul>
                         </div>

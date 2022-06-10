@@ -53,7 +53,11 @@
                         </h1>
                         <div class="product-info-detail">
                             <span class="product-info-detail-title">Brand:</span>
-                            <a href="#"><?= $categoryName['name'] ?></a>
+                            <a><?= $categoryName['name'] ?></a>
+                        </div>
+                        <div class="product-info-detail">
+                            <span class="product-info-detail-title">Exist:</span>
+                            <a><?= $product['qty'] ?></a>
                         </div>
                         <div class="product-info-detail">
                             <span class="product-info-detail-title">Rated:</span>
@@ -68,19 +72,27 @@
                         <p class="product-description">
                             <?= nl2br($product['small_description']) ?>
                         </p>
-                        <div class="product-info-price">$2345</div>
+                        <div class="product-info-price">$<?= $product['selling_price'] ?></div>
                         <div class="product-quantity-wrapper">
-                            <span class="product-quantity-btn">
+                            <span class="product-quantity-btn" onclick="QualityChange('down')">
                                 <i class='bx bx-minus'></i>
                             </span>
-                            <span class="product-quantity">1</span>
-                            <span class="product-quantity-btn">
+                            <span class="product-quantity" id="quantity-show">1</span>
+                            <span class="product-quantity-btn" onclick="QualityChange('up')">
                                 <i class='bx bx-plus'></i>
                             </span>
                         </div>
-                        <div>
-                            <button class="btn-flat btn-hover">add to cart</button>
-                        </div>
+                        <form>
+                            <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+                            <input type="hidden" name="quantity" id="quantity">
+                            <?php if (!isset($_SESSION['auth_user']['id'])) { ?>
+                                <a href="./login.php">
+                                    <button type="button" class="btn-flat btn-hover">Login to continue</button>
+                                </a>
+                            <?php } else { ?>
+                                <button class="btn-flat btn-hover">add to cart</button>
+                            <?php } ?>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -236,6 +248,25 @@
     <?php include("./includes/footer.php") ?>
     <script src="./assets/js/app.js"></script>
     <script src="./assets/js/index.js"></script>
+    <script>
+        let quantity = 1;
+        const QualityShower = document.getElementById('quantity-show');
+        const QualityInput  = document.getElementById('quantity');
+        
+        function QualityChange(type){
+            if (type == 'up'){
+                quantity ++;
+            }else{
+                quantity --;
+                if (quantity == 0){
+                    quantity = 1;
+                }
+            }
+            QualityShower.textContent = quantity + "";
+            QualityInput.value = quantity;
+        }
+
+    </script>
 </body>
 
 </html>

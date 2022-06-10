@@ -1,10 +1,9 @@
 <?php 
-session_start();
 include("./includes/header.php");
 
 $bestSellingProducts    =   getBestSelling(8);
 $LatestProducts         =   getLatestProducts(8);
-$blogs                  =   getBlogs(0, "");
+$blogs                  =   getBlogs($page, $search);
 ?>
 <body>
 

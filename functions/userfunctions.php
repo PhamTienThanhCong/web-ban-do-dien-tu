@@ -71,7 +71,7 @@ function getLatestProducts($numberGet,$page = 0,$type = "",$search=""){
 function getBlogs($page, $keyWold){
     global $conn;
     $totalBlog  = totalValue('blog');
-    $page_extra = $totalBlog * $page;
+    $page_extra = 10 * $page;
     $query =    "SELECT * FROM `blog` 
                 WHERE `title` LIKE '%$keyWold%'
                 ORDER BY `id` DESC
