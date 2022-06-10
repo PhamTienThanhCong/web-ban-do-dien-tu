@@ -30,6 +30,14 @@ $page= substr($_SERVER['SCRIPT_NAME'], strripos($_SERVER['SCRIPT_NAME'],"/")+1);
           </a>
         </li>
         <li class="nav-item">
+          <a class="nav-link text-white <?= $page== "order.php"? 'active bg-gradient-primary':'' ?>" href="order.php">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">weekend</i>
+            </div>
+            <span class="nav-link-text ms-1">Order manage</span>
+          </a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link text-white <?= $page== "category.php"? 'active bg-gradient-primary':'' ?>" href="category.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>

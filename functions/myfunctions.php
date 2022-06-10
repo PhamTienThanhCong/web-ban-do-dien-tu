@@ -3,7 +3,7 @@ include("../config/dbcon.php");
 function getAll($table)
 {
     global $conn;
-    $query= "SELECT * FROM $table";
+    $query= "SELECT * FROM $table ORDER BY id DESC";
     return $query_run= mysqli_query($conn, $query);
 }
 function getByID($table,$id)

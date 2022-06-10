@@ -64,7 +64,7 @@ include("./functions/userfunctions.php");
                                     ?>
                                     <li class="mega-dropdown"> 
                                     <a href="#"><i class='bx bx-user-circle'></i></a>
-                                        <div class="mega-content">
+                                    <div class="mega-content" style="width: auto;display: inline-block;right: 0;">
                                             <div class="row">
                                                 <div class="box">
                                                     <h3>Hello <?= $_SESSION['auth_user']['email'] ?>!</h3>
@@ -113,7 +113,7 @@ include("./functions/userfunctions.php");
                             <a href="products.php">Categories<i class='bx bxs-chevron-down'></i></a>
                             <div class="mega-content">
                                 <div class="row">                                  
-                                    <div class="col-3 col-md-12">
+                                    <div class="col-md-12">
                                         <div class="box">
                                             <ul>
                                             <?php
