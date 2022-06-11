@@ -1,10 +1,10 @@
+<link rel="stylesheet" href="./assets/css/bootstrap.min.css">
 <?php 
 include("./includes/header.php");
 
 ?>
-<link rel="stylesheet" href="./assets/css/bootstrap.min.css">
 <script src="../assets/js/boostrap.bundle.js"></script>
-
+<link rel="stylesheet" href="./assets/css/author.css">
 <div class="py-5">
     <div class="container">
         <div class="row justify-content-center">

@@ -5,7 +5,7 @@
     $database="atshop_db";
 
     $conn=mysqli_connect($host, $username, $password, $database);
-    // mysqli_set_charset($conn,'utf8');
+    mysqli_set_charset($conn,'utf8');
     //check database
     if(!$conn)
     {

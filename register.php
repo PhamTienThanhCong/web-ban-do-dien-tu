@@ -1,7 +1,7 @@
+<link rel="stylesheet" href="./assets/css/bootstrap.min.css">
 <?php 
 include("./includes/header.php");
 ?>
-<link rel="stylesheet" href="./assets/css/bootstrap.min.css">
 <script src="../assets/js/boostrap.bundle.js"></script>
 
 <div class="py-5">

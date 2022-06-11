@@ -1,4 +1,5 @@
 <?php 
+$type_post = true;
 include("./includes/header.php") ;
 $blogs = getBlogs($page, $search);
 ?>;

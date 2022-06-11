@@ -30,7 +30,7 @@ $page = $page - 1;
     
      <!-- mobile menu -->
      <div class="mobile-menu bg-second">
-            <a href="#" class="mb-logo">ATShop</a>
+            <a href="./index.php" class="mb-logo">ATShop</a>
             <span class="mb-menu-toggle" id="mb-menu-toggle">
                 <i class='bx bx-menu'></i>
             </span>
@@ -59,7 +59,11 @@ $page = $page - 1;
             <div class="bg-main">
                 <div class="mid-header container">
                     <a href="#" class="logo">ATShop</a>
-                    <form class="search" method="get">
+                    <?php if (!isset($type_post)) { ?>
+                    <form class="search" method="get" action="./products.php">
+                    <?php } else { ?>
+                    <form class="search" method="get" action="./blog.php">
+                    <?php } ?>
                         <input name="search" type="text" value="<?= $search ?>" placeholder="Search">
                         <button type="submit" style="display:inline" >
                             <i class='bx bx-search-alt'></i>
