@@ -23,15 +23,20 @@ if(isset($_POST['register-btn']))
     {
         if($password == $cpassword)
         {
-            //Inser user data
-            $insert_query= "INSERT INTO users (name,email,phone,password) VALUES ('$name','$email','$phone','$password')";
-            $insert_query_run=mysqli_query($conn,$insert_query);
-            if($insert_query_run){
-                $_SESSION['message']="Registered Successfully";
-                header('Location: ../login.php');
-            }else
-            {
-                $_SESSION['message']="Something went wrong";
+            if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                //Inser user data
+                $insert_query= "INSERT INTO users (name,email,phone,password) VALUES ('$name','$email','$phone','$password')";
+                $insert_query_run=mysqli_query($conn,$insert_query);
+                if($insert_query_run){
+                    $_SESSION['message']="Registered Successfully";
+                    header('Location: ../login.php');
+                }else
+                {
+                    $_SESSION['message']="Something went wrong";
+                    header('Location: ../register.php');
+                }
+            }else{
+                $_SESSION['message']="Địa chỉ email không hợp lệ";
                 header('Location: ../register.php');
             }
         }else{

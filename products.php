@@ -3,7 +3,7 @@
 include("./includes/header.php");
 
 $products   =   getLatestProducts(9, $page, $type, $search);
-
+$page ++;
 ?>
 
 <body>
@@ -12,9 +12,9 @@ $products   =   getLatestProducts(9, $page, $type, $search);
         <div class="container">
             <div class="box">
                 <div class="breadcumb">
-                    <a href="./index.php">home</a>
+                    <a href="/">Trang chủ</a>
                     <span><i class='bx bxs-chevrons-right'></i></span>
-                    <a href="./products.php">all products</a>
+                    <a href="./products.php">Tất cả sản phẩm</a>
                 </div>
             </div>
             <div class="box">
@@ -25,7 +25,7 @@ $products   =   getLatestProducts(9, $page, $type, $search);
                         </div>
                         <div class="box">
                             <span class="filter-header">
-                                Categories
+                                Thể loại
                             </span>
                             <ul class="filter-list">
                                 <?php
@@ -46,7 +46,7 @@ $products   =   getLatestProducts(9, $page, $type, $search);
                         </div>
                         <div class="box">
                             <span class="filter-header">
-                                Price
+                                Giá
                             </span>
                             <div class="price-range">
                                 <input type="text">
@@ -57,7 +57,7 @@ $products   =   getLatestProducts(9, $page, $type, $search);
 
                         <div class="box">
                             <span class="filter-header">
-                                Brands
+                                Thương hiệu
                             </span>
                             <ul class="filter-list">
                                 <li>
@@ -109,7 +109,7 @@ $products   =   getLatestProducts(9, $page, $type, $search);
                         </div>
                         <div class="box">
                             <span class="filter-header">
-                                Colors
+                                Màu sắc
                             </span>
                             <ul class="filter-list">
                                 <li>
@@ -169,7 +169,7 @@ $products   =   getLatestProducts(9, $page, $type, $search);
                     </div>
                     <div class="col-9 col-md-12">
                         <div class="box filter-toggle-box">
-                            <button id="filter-toggle">filter</button>
+                            <button id="filter-toggle">Lọc</button>
                         </div>
                         <div class="box">
                             <div class="row" id="products">
@@ -205,14 +205,23 @@ $products   =   getLatestProducts(9, $page, $type, $search);
                         </div>
                         <div class="box">
                             <ul class="pagination">
-                                <li><a href="#"><i class='bx bxs-chevron-left'></i></a></li>
-                                <?php for($i = 1 ; $i <= ceil(totalValue('products')/9) ; $i++) { ?>
-                                    <li><a href="?search=<?= $search ?>&page=<?= $i ?>"><?= $i ?></a></li>
-                                <?php } ?>
-                                <!-- <li><a href="?search=&page=1">1</a></li>
-                                <li><a href="?search=&page=5">5</a></li> -->
-
-                                <li><a href="#"><i class='bx bxs-chevron-right'></i></a></li>
+                                <?php if ($page != 1) {
+                                    $page--;
+                                    echo "<li><a href='?page=$page'><i class='bx bxs-chevron-left'></i></a></li>";
+                                    $page++;
+                                }
+                                for($i = 1 ; $i <= ceil(totalValue('products')/9) ; $i++) { 
+                                    if ($i == $page) {
+                                        echo "<li><a class='active'>$i</a></li>";
+                                    }else{
+                                        echo "<li><a href='?page=$i'>$i</a></li>";
+                                    }
+                                } 
+                                if ($page != ceil(totalValue('products')/9)){
+                                    $page ++;
+                                    echo "<li><a href='?page=$page'><i class='bx bxs-chevron-right'></i></a></li>";
+                                }
+                                ?>
                             </ul>
                         </div>
                     </div>

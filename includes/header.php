@@ -24,13 +24,15 @@ $page = $page - 1;
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,900&display=swap" rel="stylesheet">
     <!-- boxicons -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
     <!-- app css -->
     <link rel="stylesheet" href="./assets/css/grid.css">
     <link rel="stylesheet" href="./assets/css/app.css">
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
     
      <!-- mobile menu -->
      <div class="mobile-menu bg-second">
-            <a href="./index.php" class="mb-logo">ATShop</a>
+            <a href="/" class="mb-logo">ATShop</a>
             <span class="mb-menu-toggle" id="mb-menu-toggle">
                 <i class='bx bx-menu'></i>
             </span>
@@ -58,11 +60,11 @@ $page = $page - 1;
             <!-- mid header -->
             <div class="bg-main">
                 <div class="mid-header container">
-                    <a href="#" class="logo">ATShop</a>
+                    <a href="/" class="logo">ATShop</a>
                     <?php if (!isset($type_post)) { ?>
-                    <form class="search" method="get" action="./products.php">
+                        <form class="search" method="get" action="./products.php">
                     <?php } else { ?>
-                    <form class="search" method="get" action="./blog.php">
+                        <form class="search" method="get" action="./blog.php">
                     <?php } ?>
                         <input name="search" type="text" value="<?= $search ?>" placeholder="Search">
                         <button type="submit" style="display:inline" >
@@ -84,11 +86,11 @@ $page = $page - 1;
                                     <div class="mega-content" style="width: auto;display: inline-block;right: 0;">
                                             <div class="row">
                                                 <div class="box">
-                                                    <h3>Hello <?= $_SESSION['auth_user']['name'] ?>!</h3>
+                                                    <h3>Xin chào <?= $_SESSION['auth_user']['name'] ?>!</h3>
                                                         <ul>   
-                                                            <li><a href="user-profile.php">Profile</a></li>
-                                                            <li><a href="#">Order</a></li>
-                                                            <li><a href="logout.php">logout</a></li>        
+                                                            <li><a href="user-profile.php">Trang cá nhân</a></li>
+                                                            <li><a href="./cart-status.php">Giỏ hàng đã mua</a></li>
+                                                            <li><a href="logout.php">Đăng Xuất</a></li>        
                                                         </ul>
                                                 </div>                                          
                                             </div>  
@@ -105,8 +107,8 @@ $page = $page - 1;
                                     <div class="row">
                                         <div class="box">
                                             <ul>
-                                                <li><a href="login.php">Login</a></li>
-                                                <li><a href="register.php">Register</a></li>                                                         
+                                                <li><a href="login.php">Đăng nhập</a></li>
+                                                <li><a href="register.php">Đăng kí</a></li>                                                         
                                             </ul>
                                         </div>                                          
                                     </div>  
@@ -115,7 +117,7 @@ $page = $page - 1;
                             <?php
                             }
                             ?>
-                        <li><a href="#"><i class='bx bx-cart'></i></a></li>
+                        <li><a href="./cart.php"><i class='bx bx-cart'></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -124,10 +126,10 @@ $page = $page - 1;
             <div class="bg-second">
                 <div class="bottom-header container">
                     <ul class="main-menu">
-                        <li><a href="index.php">home</a></li>
+                        <li><a href="/">Trang chủ</a></li>
                         <!-- mega menu -->
                         <li class="mega-dropdown">
-                            <a href="products.php">Categories<i class='bx bxs-chevron-down'></i></a>
+                            <a href="products.php">Thể Loại<i class='bx bxs-chevron-down'></i></a>
                             <div class="mega-content">
                                 <div class="row">                                  
                                     <div class="col-md-12">
@@ -157,7 +159,7 @@ $page = $page - 1;
                         </li>
                         <!-- end mega menu -->
                         <li><a href="./blog.php">blog</a></li>
-                        <li><a href="#">contact</a></li>
+                        <li><a href="#">Liên lạc</a></li>
                     </ul>
                 </div>
             </div>

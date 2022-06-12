@@ -6,11 +6,11 @@
         <div class="container">
             <div class="box">
                 <div class="breadcumb">
-                    <a href="./index.php">home</a>
+                    <a href="/">Trang chủ</a>
                     <span><i class='bx bxs-chevrons-right'></i></span>
-                    <a href="./products.php">all products</a>
+                    <a href="./products.php">Tất cả sản phẩm</a>
                     <span><i class='bx bxs-chevrons-right'></i></span>
-                    <a href="#">View Product</a>
+                    <a href="#">Xem sản phẩm</a>
                 </div>
             </div>
             
@@ -52,20 +52,17 @@
                             <?= $product['name'] ?>
                         </h1>
                         <div class="product-info-detail">
-                            <span class="product-info-detail-title">Brand:</span>
+                            <span class="product-info-detail-title">Thể loại:</span>
                             <a><?= $categoryName['name'] ?></a>
                         </div>
                         <div class="product-info-detail">
-                            <span class="product-info-detail-title">Exist:</span>
+                            <span class="product-info-detail-title">Trong kho:</span>
                             <a><?= $product['qty'] ?></a>
                         </div>
                         <div class="product-info-detail">
-                            <span class="product-info-detail-title">Rated:</span>
+                            <span class="product-info-detail-title">Đánh giá:</span>
                             <span class="rating">
-                                <i class='bx bxs-star'></i>
-                                <i class='bx bxs-star'></i>
-                                <i class='bx bxs-star'></i>
-                                <i class='bx bxs-star'></i>
+                                <?= avgRate($product['id']) ?>
                                 <i class='bx bxs-star'></i>
                             </span>
                         </div>
@@ -82,23 +79,33 @@
                                 <i class='bx bx-plus'></i>
                             </span>
                         </div>
-                        <form>
+                        <form method="post" action="./functions/ordercode.php">
                             <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
-                            <input type="hidden" name="quantity" id="quantity">
+                            <input type="hidden" name="quantity" id="quantity" value="1">
+                            <input type="hidden" name="order" value="true">
                             <?php if (!isset($_SESSION['auth_user']['id'])) { ?>
                                 <a href="./login.php">
-                                    <button type="button" class="btn-flat btn-hover">Login to continue</button>
+                                    <button type="button" class="btn-flat btn-hover">Đăng nhập để tiếp tục</button>
                                 </a>
-                            <?php } else { ?>
-                                <button class="btn-flat btn-hover">add to cart</button>
-                            <?php } ?>
+                            <?php } else { 
+                                $check = checkOrder($product['id']);
+                                if ($check == 0){
+                                    echo '<button class="btn-flat btn-hover">Thêm vào giỏi hàng</button>';
+                                }else if ($check == 1) { ?>
+                                    <a href="./cart.php">
+                                        <button type="button" class="btn-flat btn-hover">Mua ngay</button>
+                                    </a>
+                            <?php 
+                                }
+                            } 
+                            ?>
                         </form>
                     </div>
                 </div>
             </div>
             <div class="box">
                 <div class="box-header">
-                    description
+                    Mô Tả
                 </div>
                 <div class="product-detail-description">
                         <p>
@@ -108,127 +115,43 @@
             </div>
             <div class="box">
                 <div class="box-header">
-                    review
+                    Đánh giá
                 </div>
                 <div>
-                    <div class="user-rate">
-                        <div class="user-info">
-                            <div class="user-avt">
-                                <img src="./images/tuat.jpg" alt="">
+                    <?php
+                        $rates = getRate($product['id']);
+                        if (mysqli_num_rows($rates) > 0){
+                        foreach ($rates as $rate) {
+                    ?>
+                        <div class="user-rate">
+                            <div class="user-info">
+                                <div class="user-avt">
+                                    <img src="./images/avatar.jpg" alt="">
+                                </div>
+                                <div class="user-name">
+                                    <span class="name"><?= $rate['name'] ?></span>
+                                    <span class="rating">
+                                        <?php  
+                                            for($i=0 ; $i<$rate['rate'] ; $i++){
+                                                echo "<i class='bx bxs-star'></i>";
+                                            }
+                                        ?>
+                                    </span>
+                                </div>
                             </div>
-                            <div class="user-name">
-                                <span class="name">tuat tran anh</span>
-                                <span class="rating">
-                                    <i class='bx bxs-star'></i>
-                                    <i class='bx bxs-star'></i>
-                                    <i class='bx bxs-star'></i>
-                                    <i class='bx bxs-star'></i>
-                                    <i class='bx bxs-star'></i>
-                                </span>
+                            <div class="user-rate-content">
+                                <?= $rate['comment'] ?>
                             </div>
                         </div>
+                    <?php 
+                        }}else{
+                    ?>
                         <div class="user-rate-content">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio ea iste, veritatis nobis amet illum, cum alias magni dolores odio, eius quo excepturi veniam ipsa voluptatibus natus voluptas vero? Aspernatur!
+                            Chưa có lượt bình luận hoặc đánh giá nào
                         </div>
-                    </div>
-                    <div class="user-rate">
-                        <div class="user-info">
-                            <div class="user-avt">
-                                <img src="./images/tuat.jpg" alt="">
-                            </div>
-                            <div class="user-name">
-                                <span class="name">tuat tran anh</span>
-                                <span class="rating">
-                                    <i class='bx bxs-star'></i>
-                                    <i class='bx bxs-star'></i>
-                                    <i class='bx bxs-star'></i>
-                                    <i class='bx bxs-star'></i>
-                                    <i class='bx bxs-star'></i>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="user-rate-content">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio ea iste, veritatis nobis amet illum, cum alias magni dolores odio, eius quo excepturi veniam ipsa voluptatibus natus voluptas vero? Aspernatur!
-                        </div>
-                    </div>
-                    <div class="user-rate">
-                        <div class="user-info">
-                            <div class="user-avt">
-                                <img src="./images/tuat.jpg" alt="">
-                            </div>
-                            <div class="user-name">
-                                <span class="name">tuat tran anh</span>
-                                <span class="rating">
-                                    <i class='bx bxs-star'></i>
-                                    <i class='bx bxs-star'></i>
-                                    <i class='bx bxs-star'></i>
-                                    <i class='bx bxs-star'></i>
-                                    <i class='bx bxs-star'></i>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="user-rate-content">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio ea iste, veritatis nobis amet illum, cum alias magni dolores odio, eius quo excepturi veniam ipsa voluptatibus natus voluptas vero? Aspernatur!
-                        </div>
-                    </div>
-                    <div class="user-rate">
-                        <div class="user-info">
-                            <div class="user-avt">
-                                <img src="./images/tuat.jpg" alt="">
-                            </div>
-                            <div class="user-name">
-                                <span class="name">tuat tran anh</span>
-                                <span class="rating">
-                                    <i class='bx bxs-star'></i>
-                                    <i class='bx bxs-star'></i>
-                                    <i class='bx bxs-star'></i>
-                                    <i class='bx bxs-star'></i>
-                                    <i class='bx bxs-star'></i>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="user-rate-content">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio ea iste, veritatis nobis amet illum, cum alias magni dolores odio, eius quo excepturi veniam ipsa voluptatibus natus voluptas vero? Aspernatur!
-                        </div>
-                    </div>
-                    <div class="user-rate">
-                        <div class="user-info">
-                            <div class="user-avt">
-                                <img src="./images/tuat.jpg" alt="">
-                            </div>
-                            <div class="user-name">
-                                <span class="name">tuat tran anh</span>
-                                <span class="rating">
-                                    <i class='bx bxs-star'></i>
-                                    <i class='bx bxs-star'></i>
-                                    <i class='bx bxs-star'></i>
-                                    <i class='bx bxs-star'></i>
-                                    <i class='bx bxs-star'></i>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="user-rate-content">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio ea iste, veritatis nobis amet illum, cum alias magni dolores odio, eius quo excepturi veniam ipsa voluptatibus natus voluptas vero? Aspernatur!
-                        </div>
-                    </div>
-                    <div class="box">
-                        <ul class="pagination">
-                            <li><a href="#"><i class='bx bxs-chevron-left'></i></a></li>
-                            <li><a href="#" class="active">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#"><i class='bx bxs-chevron-right'></i></a></li>
-                        </ul>
-                    </div>
+                    <?php } ?>
+                    
                 </div>
-            </div>
-            <div class="box">
-                <div class="box-header">
-                    related products
-                </div>
-                <div class="row" id="related-products"></div>
             </div>
         </div>
         <?php

@@ -110,7 +110,7 @@ $blogs                  =   getBlogs($page, $search);
     <div class="section">
         <div class="container">
             <div class="section-header">
-                <h2>Latest product</h2>
+                <h2>Những sản phẩm mới nhất</h2>
             </div>
             <div class="row" id="latest-products">
                 <?php
@@ -147,7 +147,7 @@ $blogs                  =   getBlogs($page, $search);
                 <?php } ?>
             </div>
             <div class="section-footer">
-                <a href="./products.php" class="btn-flat btn-hover">view all</a>
+                <a href="./products.php" class="btn-flat btn-hover">Xem tất cả</a>
             </div>
         </div>
     </div>
@@ -189,7 +189,7 @@ $blogs                  =   getBlogs($page, $search);
     <div class="section">
         <div class="container">
             <div class="section-header">
-                <h2>best selling</h2>
+                <h2>Những sản phẩm bán chạy nhất</h2>
             </div>
             <div class="row" id="best-products">
                 <?php
@@ -226,7 +226,7 @@ $blogs                  =   getBlogs($page, $search);
                 <?php } ?>
             </div>
             <div class="section-footer">
-                <a href="./products.php" class="btn-flat btn-hover">view all</a>
+                <a href="./products.php" class="btn-flat btn-hover">Xem tất cả</a>
             </div>
         </div>
     </div>
@@ -236,7 +236,7 @@ $blogs                  =   getBlogs($page, $search);
     <div class="section">
         <div class="container">
             <div class="section-header">
-                <h2>latest blog</h2>
+                <h2>Blog mới nhất</h2>
             </div>
             <?php
                 $count = 0; 
@@ -257,7 +257,9 @@ $blogs                  =   getBlogs($page, $search);
                         <div class="blog-preview">
                             <?= $blog['small_content'] ?>
                         </div>
-                        <button class="btn-flat btn-hover">read more</button>
+                        <a href="./blog-detail.php?slug=<?= $blog['slug'] ?>">
+                            <button class="btn-flat btn-hover">Đọc Thêm</button>
+                        </a>
                     </div>
                 </div>
             <?php } else { ?>
@@ -272,7 +274,9 @@ $blogs                  =   getBlogs($page, $search);
                         <div class="blog-preview">
                             <?= $blog['small_content'] ?>
                         </div>
-                        <button class="btn-flat btn-hover">read more</button>
+                        <a href="./blog-detail.php?slug=<?= $blog['slug'] ?>">
+                            <button class="btn-flat btn-hover">Đọc Thêm</button>
+                        </a>
                     </div>
                 </div>
             <?php
@@ -281,7 +285,7 @@ $blogs                  =   getBlogs($page, $search);
             } 
             ?>
             <div class="section-footer">
-                <a href="./blog.php" class="btn-flat btn-hover">view all</a>
+                <a href="./blog.php" class="btn-flat btn-hover">Xem tất cả</a>
             </div>
         </div>
     </div>

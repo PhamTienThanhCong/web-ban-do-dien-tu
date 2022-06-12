@@ -328,7 +328,20 @@ else if(isset($_POST['delete_blog_btn'])){
 
     }
 }
+else if (isset($_GET['order'])){
+    $order_id   = $_GET['id'];
+    $type       = $_GET['order'];
+    $query =    "UPDATE `orders` SET `status` = '$type'
+                WHERE `id` = '$order_id'"; 
+    mysqli_query($conn, $query);
+
+    $query =    "UPDATE `order_detail` SET `status` = '$type'
+                WHERE `order_id` = '$order_id'"; 
+    mysqli_query($conn, $query);
+
+    redirect("order-detail.php?id_order=$order_id","Cập nhập trạng thái thành công");
+}
 {
-    header('Location: ../index.php');
+    header('Location: ./index.php');
 }
 ?>

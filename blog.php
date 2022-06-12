@@ -2,6 +2,7 @@
 $type_post = true;
 include("./includes/header.php") ;
 $blogs = getBlogs($page, $search);
+$page ++;
 ?>;
 
 <body>
@@ -10,15 +11,15 @@ $blogs = getBlogs($page, $search);
         <div class="container">
             <div class="box">
                 <div class="breadcumb">
-                    <a href="./index.php">home</a>
+                    <a href="/">Trang chủ</a>
                     <span><i class='bx bxs-chevrons-right'></i></span>
-                    <a href="./blog.php">all blog</a>
+                    <a href="./blog.php">Tất cả Blog</a>
                 </div>
             </div>
             
             <div class="box">
                 <div class="box-header">
-                    Blog for you
+                    Blog dành cho bạn
                 </div>
                 <?php
                     foreach($blogs as $blog) { 
@@ -34,20 +35,32 @@ $blogs = getBlogs($page, $search);
                             <div class="blog-preview-page">
                                 <?= $blog['small_content'] ?>
                             </div>
-                            <button class="btn-flat btn-hover btn-read-page">read more</button>
+                            <a href="./blog-detail.php?slug=<?= $blog['slug'] ?>">
+                                <button class="btn-flat btn-hover btn-read-page">Đọc thêm</button>
+                            </a>
                         </div>
                     </div>
                 <?php } ?>
             </div>
             <div class="box">
                 <ul class="pagination">
-                    <li><a href="#"><i class='bx bxs-chevron-left'></i></a></li>
-                    <li><a href="?search=&page=1" class="active">1</a></li>
-                    <li><a href="?search=&page=2">2</a></li>
-                    <li><a href="?search=&page=3">3</a></li>
-                    <li><a href="?search=&page=4">4</a></li>
-                    <li><a href="?search=&page=5">5</a></li>
-                    <li><a href="#"><i class='bx bxs-chevron-right'></i></a></li>
+                    <?php if ($page != 1) { 
+                        $page--;
+                        echo "<li><a href='?page=$page'><i class='bx bxs-chevron-left'></i></a></li>";
+                        $page++;
+                    }
+                    for($i = 1 ; $i <= ceil(totalValue('blog')/10) ; $i++) { 
+                        if ($i == $page) {
+                            echo "<li><a class='active'>$i</a></li>";
+                        }else{
+                            echo "<li><a href='?page=$i'>$i</a></li>";
+                        }
+                    } 
+                    if ($page != ceil(totalValue('blog')/10)){
+                        $page ++;
+                        echo "<li><a href='?page=$page'><i class='bx bxs-chevron-right'></i></a></li>";
+                    }
+                    ?>
                 </ul>
             </div>
             <div class="box">

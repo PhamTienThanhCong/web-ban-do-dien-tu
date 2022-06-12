@@ -4,7 +4,6 @@
 include("./includes/header.php");
 
 if (!isset($_SESSION['auth_user']['id'])){
-    // redirect("./login.php", "you need login first");
     die("Tu choi truy cap");
 }
 
