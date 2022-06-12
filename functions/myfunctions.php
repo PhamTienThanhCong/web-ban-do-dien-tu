@@ -41,7 +41,8 @@ function getAllOrder($type = -1){
                 JOIN `users` ON `orders`.`user_id` = `users`.`id`
                 LEFT JOIN `order_detail` ON `order_detail`.`order_id` = `orders`.`id`
                 WHERE`orders`.`status` IN($getStatus)
-                GROUP BY `orders`.`id`";
+                GROUP BY `orders`.`id`
+                ORDER BY `orders`.`id` DESC";
     return $query_run= mysqli_query($conn, $query);
 }
 

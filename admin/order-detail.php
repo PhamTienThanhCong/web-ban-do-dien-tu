@@ -37,7 +37,7 @@ $orders = getOrderDetail($type);
                                     ?> 
                                     update to: 
                                     <?php 
-                                        $id_order = $order['id'];
+                                        $id_order = $order['order_id'];
                                         if ($order['status'] == 2){
                                             echo "<a href='./code.php?order=3&id=$id_order'><span class='badge badge-sm bg-gradient-info'>Delivery</span></a>";
                                         }else if ($order["status"] == 3){

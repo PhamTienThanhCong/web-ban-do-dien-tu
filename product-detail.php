@@ -89,13 +89,13 @@
                                 </a>
                             <?php } else { 
                                 $check = checkOrder($product['id']);
-                                if ($check == 0){
-                                    echo '<button class="btn-flat btn-hover">Thêm vào giỏi hàng</button>';
-                                }else if ($check == 1) { ?>
+                                if ($check == 1) { ?>
                                     <a href="./cart.php">
                                         <button type="button" class="btn-flat btn-hover">Mua ngay</button>
                                     </a>
                             <?php 
+                                }else{
+                                    echo '<button class="btn-flat btn-hover">Thêm vào giỏi hàng</button>';
                                 }
                             } 
                             ?>

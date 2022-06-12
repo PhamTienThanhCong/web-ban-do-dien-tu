@@ -43,7 +43,7 @@ if (isset($_POST['order'])){
     $query =    "UPDATE `order_detail` SET `quantity` = $quantity 
                 WHERE `product_id` = '$product_id' AND `user_id` = '$user_id' AND `status` = '1'";
     mysqli_query($conn, $query);
-    $_SESSION['message']="Mua sản phẩm thành công";
+    $_SESSION['message']="Cập nhập sản phẩm thành công";
     header("Location: ../cart.php");
 }else if (isset($_POST['buy_product'])){
     $user_id    = $_SESSION['auth_user']['id'];

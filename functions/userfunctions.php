@@ -116,7 +116,8 @@ function getOrderWasBuy(){
     $user_id = $_SESSION['auth_user']['id'];   
     $query =    "SELECT `order_detail`.*, `products`.`name`, `products`.`slug` FROM `order_detail` 
                 JOIN `products` on `order_detail`.`product_id` = `products`.`id`
-                WHERE `order_detail`.`user_id` = '$user_id' AND `order_detail`.`status` NOT IN (0,1)";
+                WHERE `order_detail`.`user_id` = '$user_id' AND `order_detail`.`status` NOT IN (0,1)
+                ORDER BY `order_detail`.`id` DESC";
     return mysqli_query($conn, $query);
 }
 
