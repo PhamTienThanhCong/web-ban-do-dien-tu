@@ -4,10 +4,10 @@ if(isset($_SESSION['auth']))
 {
     if($_SESSION['role_as'] != 1)
     {
-         redirect(" ../index.php", "You're not authorized to access this page");
+         redirect(" ../index.php", "Bạn không có quyền truy cập trang này!");
     }
 }else
 {   
-    redirect("../login.php", "Login to continue");
+    redirect("../login.php", "Đăng nhập để tiếp tục");
 } 
 ?>

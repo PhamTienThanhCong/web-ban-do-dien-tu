@@ -21,11 +21,11 @@ $users = getAllUsers(1);
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Author</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Address</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Total order</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Day come</th>
-                                        <th class="text-secondary opacity-7"> Mail </th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-10">Name</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-10 ps-2">Phone</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-10 ps-2">Address</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10">Total order</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10">Day come</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -41,6 +41,11 @@ $users = getAllUsers(1);
                                             </td>
                                             <td>
                                                 <p class="text-xs font-weight-bold mb-0">
+                                                <?= $user['phone']?>
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <p class="text-xs font-weight-bold mb-0">
                                                     <?= $user['address']?>
                                                 </p>
                                             </td>
@@ -51,11 +56,6 @@ $users = getAllUsers(1);
                                                 <span class="text-secondary text-xs font-weight-bold">
                                                     <?= date('d-m-Y', strtotime($user['creat_at'])); ?>
                                                 </span>
-                                            </td>
-                                            <td class="align-middle" >
-                                                <a href="mailto:<?= $user['email'] ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" >
-                                                    Call
-                                                </a>
                                             </td>
                                         </tr>
                                     <?php } ?>

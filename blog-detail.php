@@ -6,7 +6,7 @@
         <div class="container">
             <div class="box">
                 <div class="breadcumb">
-                    <a href="/">Trang chủ</a>
+                    <a href="index.php">Trang chủ</a>
                     <span><i class='bx bxs-chevrons-right'></i></span>
                     <a href="./blog.php">Tất cả blog</a>
                     <span><i class='bx bxs-chevrons-right'></i></span>

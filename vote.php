@@ -53,7 +53,10 @@ $id = $_GET['id'];
                             <?= $product['description'] ?>
                         </div>
                     </div>
-                <?php } ?>
+                <?php } 
+                ?>
+
+
                 <form class="form-vote" method="post" action="./functions/ordercode.php">
                     <div class="rate-form">
                         <input type="hidden" name="rate" value="true">
@@ -87,6 +90,5 @@ $id = $_GET['id'];
     <?php include("./includes/footer.php") ?>
     <script src="./assets/js/app.js"></script>
     <script src="./assets/js/index.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </body>
 </html>

@@ -24,10 +24,10 @@ if(isset($_POST['add_category_btn']))
     if($cate_query_run)
     {
         move_uploaded_file($_FILES['image']['tmp_name'], $path.'/'.$filename);
-        redirect("add-category.php", "Catefory added Successfully");
+        redirect("add-category.php", "Thêm danh mục thành công");
     }else
     {
-        redirect("add-category.php", "Something Went Wrong");
+        redirect("add-category.php", "Đã xảy ra lỗi");
     }
 }else if(isset($_POST['update_category_btn']))
 {
@@ -66,11 +66,11 @@ if(isset($_POST['add_category_btn']))
                 unlink("../images/".$old_image);
             }
         }
-        redirect("edit-category.php?id=$category_id","Category Update Successflly");
+        redirect("edit-category.php?id=$category_id","Cập nhật danh mục thành công");
     }
     else
     {
-        redirect("edit-category.php?id=$category_id","Something Wrong");
+        redirect("edit-category.php?id=$category_id","Đã xảy ra lỗi");
     }
 }
 else if(isset($_POST['delete_category_btn']))
@@ -91,10 +91,10 @@ else if(isset($_POST['delete_category_btn']))
             {
                 unlink("../images/".$image);
             }
-        redirect("category.php","Category deleted Successflly");
+        redirect("category.php","Xóa danh mục thành công");
     }else
     {
-        redirect("caterory.php","Something Went Wrong");
+        redirect("caterory.php","Đã xảy ra lỗi");
 
     }
 }
@@ -126,14 +126,14 @@ else if(isset($_POST['add_product_btn']))
         if($product_query_run)
         {
             move_uploaded_file($_FILES['image']['tmp_name'], $path.'/'.$filename);
-            redirect("add-product.php", "Product added Successfully");
+            redirect("add-product.php", "Thêm sản phẩm thành công");
         }else
         {
-            redirect("add-product.php", "Something Went Wrong");
+            redirect("add-product.php", "Đã xảy ra lỗi");
         }
     }else
     {
-        redirect("add-product.php", "All fields are madatory");
+        redirect("add-product.php", "Bạn chưa điền đủ thông tin");
     }
 }
 else if(isset($_POST['update_product_btn']))
@@ -181,10 +181,10 @@ else if(isset($_POST['update_product_btn']))
                 unlink("../images/".$old_image);
             }
         }
-        redirect("edit-product.php?id=$product_id","Product Update Successflly");
+        redirect("edit-product.php?id=$product_id","Cập nhật sản phẩm thành công");
     }else
     {
-        redirect("edit-product.php?id=$product_id","Something Wrong");
+        redirect("edit-product.php?id=$product_id","Đã xảy ra lỗi");
     }
 }
 else if(isset($_POST['delete_product_btn']))
@@ -205,11 +205,10 @@ else if(isset($_POST['delete_product_btn']))
             {
                 unlink("../images/".$image);
             }
-        redirect("products.php","Product deleted Successflly");
+        redirect("products.php","Xóa sản phẩm thành công");
     }else
     {
-        redirect("products.php","Something Went Wrong");
-
+        redirect("products.php","Không thể xóa sản phẩm vì có đơn hàng chứa sản phẩm đó");
     }
 
 }
@@ -236,14 +235,14 @@ else if(isset($_POST['add_blog_btn']))
         if($blog_query_run)
         {
             move_uploaded_file($_FILES['image']['tmp_name'], $path.'/'.$filename);
-            redirect("add-blog.php", "blog added Successfully");
+            redirect("add-blog.php", "Thêm bài viết thành công");
         }else
         {
-            redirect("add-blog.php", "Something Went Wrong");
+            redirect("add-blog.php", "Đã xảy ra lỗi");
         }
     }else
     {
-        redirect("add-product.php", "All fields are madatory");
+        redirect("add-product.php", "Bạn chưa điền đủ thông tin");
     }
 }
 else if(isset($_POST['update_blog_btn'])){
@@ -294,10 +293,10 @@ else if(isset($_POST['update_blog_btn'])){
                 unlink("../images/".$old_image);
             }
         }
-        redirect("edit-blog.php?id=$id","blog Update Successflly");
+        redirect("edit-blog.php?id=$id","Cập nhật bài viết thành công");
     }else
     {
-        redirect("edit-blog.php?id=$id","Something Wrong");
+        redirect("edit-blog.php?id=$id","Đã xảy ra lỗi");
     }
 }
 else if(isset($_POST['delete_blog_btn'])){
@@ -321,10 +320,10 @@ else if(isset($_POST['delete_blog_btn'])){
             {
                 unlink("../images/".$image);
             }
-        redirect("blog.php","Blog deleted Successflly");
+        redirect("blog.php","Xóa bài viết thành công");
     }else
     {
-        redirect("blog.php","Something Went Wrong");
+        redirect("blog.php","Đã xảy ra lỗi");
 
     }
 }

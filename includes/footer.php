@@ -22,7 +22,7 @@
                 <div class="col-2 col-md-6 col-sm-12">
                     <div class="contact">
                         <h3 class="contact-header">
-                            ATShop
+                            COSSOFT
                         </h3>
                         <ul class="contact-socials">
                             <li><a href="#">
@@ -44,6 +44,7 @@
         </div>
 </footer>
 <!-- app js -->
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 <script>
   <?php if(isset($_SESSION['message']))
   {

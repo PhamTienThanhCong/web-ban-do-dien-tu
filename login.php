@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="./assets/css/bootstrap.min.css">
 <?php 
 include("./includes/header.php");
 
@@ -9,32 +8,21 @@ include("./includes/header.php");
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                    <?php if(isset($_SESSION['message']))
-                    {
-                    ?>
-                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                            <strong>Hey!</strong><?= $_SESSION['message']; ?>.
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    <?php
-                        unset($_SESSION['message']);
-                    }
-                    ?>
                     <div class="card">
                         <div class="card-header bg-primary">
-                        <h1> Login Form</h1>
+                        <h1 style="color:white ;">Đăng nhập</h1>
                         </div>
                         <div class="card-body">
                             <form action="./functions/authcode.php" method="POST"> 
                                     <div class="mb-3">
-                                        <b><label for="exampleInputEmail1" class="form-label">Email address</label></b>
-                                        <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  placeholder="Enter Your Email">
+                                        <b><label for="exampleInputEmail1" class="form-label">Địa chỉ Email</label></b>
+                                        <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  placeholder="Nhập Email">
                                     </div>
                                     <div class="mb-3">
-                                        <b><label for="exampleInputPassword1" class="form-label">Password</label></b>
-                                        <input type="password" name="password" class="form-control"  placeholder="Enter Password">
+                                        <b><label for="exampleInputPassword1" class="form-label">Mật khẩu</label></b>
+                                        <input type="password" name="password" class="form-control"  placeholder="Nhập mật khẩu">
                                     </div>              
-                                    <button type="submit" name="login_btn" class="btn btn-primary">Login</button>
+                                    <button type="submit" name="login_btn" class="btn btn-primary">Đăng nhập</button>
                             </form>
                         </div>
                     </div>

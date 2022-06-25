@@ -33,11 +33,11 @@ if (!isset($_SESSION['auth_user']['id'])){
         <div class="container">
             <div class="box">
                 <div class="breadcumb">
-                    <a href="/">Trang chủ</a>
+                    <a href="index.php">Trang chủ</a>
                     <span><i class='bx bxs-chevrons-right'></i></span>
                     <a href="./cart.php">Giỏ hàng của tôi</a>
                     <span><i class='bx bxs-chevrons-right'></i></span>
-                    <a href="#">Giỏ hàng đã mua</a>
+                    <a href="#">Đơn hàng</a>
                 </div>
             </div>
 

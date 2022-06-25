@@ -6,23 +6,7 @@ $LatestProducts         =   getLatestProducts(8);
 $blogs                  =   getBlogs($page, $search);
 ?>
 <body>
-
-    <!-- header -->
- 
-    <!-- end header -->
-    <?php if(isset($_SESSION['message']))
-            {
-            ?>
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <strong>Hey!</strong><?= $_SESSION['message']; ?>.
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            <?php
-                unset($_SESSION['message']);
-            }
-            
-    ?>
-    <!-- hero section -->
+   <!-- hero section -->
     <div class="hero">
         <div class="slider">
             <div class="container">
@@ -49,7 +33,7 @@ $blogs                  =   getBlogs($page, $search);
                                 <div class="top-down trans-delay-0-6">
                                     <a href="./product-detail.php?slug=<?= $product['slug'] ?>">
                                         <button class="btn-flat btn-hover">
-                                            <span>shop now</span>
+                                            <span>Mua ngay</span>
                                         </button>
                                     </a>
                                 </div>
@@ -92,7 +76,7 @@ $blogs                  =   getBlogs($page, $search);
                     <div class="text">
                         <h3><?= $product['name'] ?></h3>
                         <a href="./product-detail.php?slug=<?= $product['slug'] ?>">
-                            <button class="btn-flat btn-hover"><span>shop collection</span></button>
+                            <button class="btn-flat btn-hover"><span>Xem chi tiết</span></button>
                         </a>
                     </div>
                     <img src="./images/<?= $product['image'] ?>" alt="">
@@ -125,14 +109,12 @@ $blogs                  =   getBlogs($page, $search);
                         <div class="product-card-info">
                             <div class="product-btn">
                                 <a href="./product-detail.php?slug=<?= $product['slug'] ?>">
-                                    <button class="btn-flat btn-hover btn-shop-now">shop now</button>
+                                    <button class="btn-flat btn-hover btn-shop-now">Mua ngay</button>
                                 </a>
                                 <button class="btn-flat btn-hover btn-cart-add">
                                     <i class='bx bxs-cart-add'></i>
                                 </button>
-                                <button class="btn-flat btn-hover btn-cart-add">
-                                    <i class='bx bxs-heart'></i>
-                                </button>
+                                
                             </div>
                             <div class="product-card-name">
                                 <?= $product['name'] ?>
@@ -172,7 +154,7 @@ $blogs                  =   getBlogs($page, $search);
                             <?= $product['small_description']?>
                         </p>
                         <a href="./product-detail.php?slug=<?= $product['slug'] ?>">
-                            <button class="btn-flat btn-hover">shop now</button>
+                            <button class="btn-flat btn-hover">Xem chi tiết</button>
                         </a>
                     </div>
                 </div>
@@ -204,7 +186,7 @@ $blogs                  =   getBlogs($page, $search);
                         <div class="product-card-info">
                             <div class="product-btn">
                                 <a href="./product-detail.php?slug=<?= $product['slug'] ?>">
-                                    <button class="btn-flat btn-hover btn-shop-now">shop now</button>
+                                    <button class="btn-flat btn-hover btn-shop-now">Mua ngay</button>
                                 </a>
                                 <button class="btn-flat btn-hover btn-cart-add">
                                     <i class='bx bxs-cart-add'></i>
@@ -236,7 +218,7 @@ $blogs                  =   getBlogs($page, $search);
     <div class="section">
         <div class="container">
             <div class="section-header">
-                <h2>Blog mới nhất</h2>
+                <h2>Bài viết mới nhất</h2>
             </div>
             <?php
                 $count = 0; 

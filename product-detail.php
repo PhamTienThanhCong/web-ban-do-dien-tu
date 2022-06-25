@@ -1,31 +1,30 @@
 <?php include("./includes/header.php") ?>;
 
 <body>
+    <?php
+        if(isset($_GET['slug']))
+        {
+            $slug       = $_GET['slug'];
+            $product    = getBySlug("products", $slug);
+
+            if(mysqli_num_rows($product) >0)
+            {
+            $product        = mysqli_fetch_array($product);
+            $categoryName   = getByID("categories", $product['category_id']);
+            $categoryName   = mysqli_fetch_array($categoryName);
+    ?>
     <!-- product-detail content -->
     <div class="bg-main">
         <div class="container">
             <div class="box">
                 <div class="breadcumb">
-                    <a href="/">Trang chủ</a>
+                    <a href="index.php">Trang chủ</a>
                     <span><i class='bx bxs-chevrons-right'></i></span>
                     <a href="./products.php">Tất cả sản phẩm</a>
                     <span><i class='bx bxs-chevrons-right'></i></span>
-                    <a href="#">Xem sản phẩm</a>
+                    <a href="#"><?= $product['name']?></a>
                 </div>
             </div>
-            
-            <?php
-                if(isset($_GET['slug']))
-                {
-                    $slug       = $_GET['slug'];
-                    $product    = getBySlug("products", $slug);
-
-                    if(mysqli_num_rows($product) >0)
-                    {
-                    $product        = mysqli_fetch_array($product);
-                    $categoryName   = getByID("categories", $product['category_id']);
-                    $categoryName   = mysqli_fetch_array($categoryName);
-            ?>
 
             <div class="row product-row">
                 <div class="col-5 col-md-12">
@@ -52,12 +51,12 @@
                             <?= $product['name'] ?>
                         </h1>
                         <div class="product-info-detail">
-                            <span class="product-info-detail-title">Thể loại:</span>
+                            <span class="product-info-detail-title">Danh mục:</span>
                             <a><?= $categoryName['name'] ?></a>
                         </div>
                         <div class="product-info-detail">
-                            <span class="product-info-detail-title">Trong kho:</span>
-                            <a><?= $product['qty'] ?></a>
+                            <span class="product-info-detail-title">Còn:</span>
+                            <a><?= $product['qty'] ?></a><span class="product-info-detail-title"> Sản phẩm</span>
                         </div>
                         <div class="product-info-detail">
                             <span class="product-info-detail-title">Đánh giá:</span>
@@ -66,6 +65,7 @@
                                 <i class='bx bxs-star'></i>
                             </span>
                         </div>
+                        <h3>Đặc điểm nổi bật</h3>
                         <p class="product-description">
                             <?= nl2br($product['small_description']) ?>
                         </p>

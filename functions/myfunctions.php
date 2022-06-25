@@ -36,7 +36,7 @@ function getAllOrder($type = -1){
     if ($type != -1){
         $getStatus = $type . "";
     }
-    $query =    "SELECT`orders`.*,COUNT(`order_detail`.`id`) as`quantity`,
+    $query =    "SELECT `orders`.*,COUNT(`order_detail`.`id`) as`quantity`,
                 `users`.`name`,`users`.`email`,`users`.`phone`,`users`.`address` FROM`orders`
                 JOIN `users` ON `orders`.`user_id` = `users`.`id`
                 LEFT JOIN `order_detail` ON `order_detail`.`order_id` = `orders`.`id`

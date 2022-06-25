@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <?php 
 
 include("./includes/header.php");
@@ -20,42 +19,42 @@ $data= mysqli_fetch_array($users);
     <!-- header -->
  
     <!-- end header -->
-    <?php if(isset($_SESSION['message']))
-            {
-            ?>
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <strong>Hey!</strong><?= $_SESSION['message']; ?>.
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            <?php
-                unset($_SESSION['message']);
-            }
-                
-    ?>
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <h1 >Profile</h1>
+                <h1 >Trang cá nhân</h1>
             </div>
             <div class="col-md-8">
                 <form action="./functions/authcode.php" method="POST">
-                        <label class="mb-0" for=""><b>Name</b></label>
-                        <input class="form-control" type="text" name="name" value="<?= $data['name']?>" ><br>
+                        <label class="mb-0" for=""><b>Họ và tên</b></label>
+                        <input class="form-control" required type="text" name="name" value="<?= $data['name']?>" ><br>
                         <label class="mb-0" for=""><b>Email</b></label>
-                        <input class="form-control" type="text" name="email" value="<?= $data['email']?>" ><br>
-                        <label class="mb-0" for=""><b>Phone Number</b></label>
-                        <input class="form-control" type="text" name="phone" value="<?= $data['phone']?>"><br>
-                        <label class="mb-0" for=""><b>Address</b></label>
-                        <input class="form-control" type="text" name="address" value="<?= $data['address']?>" ><br>
-                        <label class="mb-0" for=""><b>Password</b></label>
-                        <input class="form-control" type="password" name="password" value="<?= $data['password']?>" ><br>
-                        <label class="mb-0" for=""><b>Confirm Password</b></label>
-                        <input class="form-control" type="password" name="cpassword" value="<?= $data['password']?>" ><br> 
+                        <input class="form-control" required type="text" name="email" value="<?= $data['email']?>" ><br>
+                        <label class="mb-0" for=""><b>Số điện thoại</b></label>
+                        <input class="form-control" required type="text" name="phone" value="<?= $data['phone']?>"><br>
+                        <label class="mb-0" for=""><b>Địa chỉ</b></label>
+                        <input class="form-control" required type="text" name="address" value="<?= $data['address']?>" ><br>
+                        <label class="mb-0" for=""><b>Mật khẩu</b></label>
+                        <input class="form-control" type="password" name="password" ><br>
+                        <label class="mb-0" for=""><b>Xác nhận mật khẩu</b></label>
+                        <input class="form-control" type="password" name="cpassword"><br> 
                         <input type="hidden" name="update_user_btn" value="true">   
-                        <button type="submit" class="btn btn-primary" >Save</button>
+                        <button type="submit" class="btn btn-primary" >Lưu</button>
                 </form>         
             </div>           
         </div>
     </div>
 </body>
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+<script>
+  <?php if(isset($_SESSION['message']))
+  {
+  ?>
+    alertify.set('notifier','position', 'top-right');
+    alertify.success('<?= $_SESSION['message'] ?>');
+  <?php 
+    unset($_SESSION['message']);
+  }
+  ?>
+</script>
 </html>

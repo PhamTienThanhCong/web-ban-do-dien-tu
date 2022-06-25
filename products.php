@@ -12,7 +12,7 @@ $page ++;
         <div class="container">
             <div class="box">
                 <div class="breadcumb">
-                    <a href="/">Trang chủ</a>
+                    <a href="index.php">Trang chủ</a>
                     <span><i class='bx bxs-chevrons-right'></i></span>
                     <a href="./products.php">Tất cả sản phẩm</a>
                 </div>
@@ -25,7 +25,7 @@ $page ++;
                         </div>
                         <div class="box">
                             <span class="filter-header">
-                                Thể loại
+                                Danh mục
                             </span>
                             <ul class="filter-list">
                                 <?php
@@ -42,121 +42,6 @@ $page ++;
                                 }
                                 ?>
 
-                            </ul>
-                        </div>
-                        <div class="box">
-                            <span class="filter-header">
-                                Giá
-                            </span>
-                            <div class="price-range">
-                                <input type="text">
-                                <span>-</span>
-                                <input type="text">
-                            </div>
-                        </div>
-
-                        <div class="box">
-                            <span class="filter-header">
-                                Thương hiệu
-                            </span>
-                            <ul class="filter-list">
-                                <li>
-                                    <div class="group-checkbox">
-                                        <input type="checkbox" id="remember1" checked="checked">
-                                        <label for="remember1">
-                                            JBL
-                                            <i class='bx bx-check'></i>
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="group-checkbox">
-                                        <input type="checkbox" id="remember2">
-                                        <label for="remember2">
-                                            Beat
-                                            <i class='bx bx-check'></i>
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="group-checkbox">
-                                        <input type="checkbox" id="remember3">
-                                        <label for="remember3">
-                                            Logitech
-                                            <i class='bx bx-check'></i>
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="group-checkbox">
-                                        <input type="checkbox" id="remember4">
-                                        <label for="remember4">
-                                            Samsung
-                                            <i class='bx bx-check'></i>
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="group-checkbox">
-                                        <input type="checkbox" id="remember5">
-                                        <label for="remember5">
-                                            Sony
-                                            <i class='bx bx-check'></i>
-                                        </label>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="box">
-                            <span class="filter-header">
-                                Màu sắc
-                            </span>
-                            <ul class="filter-list">
-                                <li>
-                                    <div class="group-checkbox">
-                                        <input type="checkbox" id="remember1">
-                                        <label for="remember1">
-                                            Red
-                                            <i class='bx bx-check'></i>
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="group-checkbox">
-                                        <input type="checkbox" id="remember2">
-                                        <label for="remember2">
-                                            Blue
-                                            <i class='bx bx-check'></i>
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="group-checkbox">
-                                        <input type="checkbox" id="remember3">
-                                        <label for="remember3">
-                                            White
-                                            <i class='bx bx-check'></i>
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="group-checkbox">
-                                        <input type="checkbox" id="remember4">
-                                        <label for="remember4">
-                                            Pink
-                                            <i class='bx bx-check'></i>
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="group-checkbox">
-                                        <input type="checkbox" id="remember5">
-                                        <label for="remember5">
-                                            Yellow
-                                            <i class='bx bx-check'></i>
-                                        </label>
-                                    </div>
-                                </li>
                             </ul>
                         </div>
                         <!-- <div class="box">
@@ -182,13 +67,11 @@ $page ++;
                                         </div>
                                         <div class="product-card-info">
                                             <div class="product-btn">
-                                                <a href="./product-detail.php?slug=<?= $product['slug'] ?>" class="btn-flat btn-hover btn-shop-now">shop now</a>
+                                                <a href="./product-detail.php?slug=<?= $product['slug'] ?>" class="btn-flat btn-hover btn-shop-now">Mua ngay</a>
                                                 <button class="btn-flat btn-hover btn-cart-add">
                                                     <i class='bx bxs-cart-add'></i>
                                                 </button>
-                                                <button class="btn-flat btn-hover btn-cart-add">
-                                                    <i class='bx bxs-heart'></i>
-                                                </button>
+                                                
                                             </div>
                                             <div class="product-card-name">
                                                 <?= $product['name'] ?>
@@ -205,11 +88,12 @@ $page ++;
                         </div>
                         <div class="box">
                             <ul class="pagination">
-                                <?php if ($page != 1) {
-                                    $page--;
-                                    echo "<li><a href='?page=$page'><i class='bx bxs-chevron-left'></i></a></li>";
-                                    $page++;
-                                }
+                                <?php 
+                                // if ($page != 1) {
+                                //     $page--;
+                                //     echo "<li><a href='?page=$page'><i class='bx bxs-chevron-left'></i></a></li>";
+                                //     $page++;
+                                // }
                                 for($i = 1 ; $i <= ceil(totalValue('products')/9) ; $i++) { 
                                     if ($i == $page) {
                                         echo "<li><a class='active'>$i</a></li>";
@@ -217,10 +101,10 @@ $page ++;
                                         echo "<li><a href='?page=$i'>$i</a></li>";
                                     }
                                 } 
-                                if ($page != ceil(totalValue('products')/9)){
-                                    $page ++;
-                                    echo "<li><a href='?page=$page'><i class='bx bxs-chevron-right'></i></a></li>";
-                                }
+                                // if ($page != ceil(totalValue('products')/9)){
+                                //     $page ++;
+                                //     echo "<li><a href='?page=$page'><i class='bx bxs-chevron-right'></i></a></li>";
+                                // }
                                 ?>
                             </ul>
                         </div>

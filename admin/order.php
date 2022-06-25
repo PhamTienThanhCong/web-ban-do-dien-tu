@@ -31,23 +31,26 @@ $orders = getAllOrder($type);
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">User</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">product</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">address</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Product</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Address</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Time order</th>
-                                        <th class="text-secondary opacity-7">function</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     
-                                <?php foreach($orders as $order){ ?>
+                                <?php 
+                                foreach($orders as $order)
+                                { 
+                                ?>
                                     <tr>
                                         <td>
+                                            <p class="text-xs font-weight-bold mb-0">&nbsp &nbsp #<?= $order['id'] ?></p>
+                                        </td>
+                                        <td>
                                             <div class="d-flex px-2 py-1">
-                                                <div>
-                                                    <img src="../images/avatar.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
-                                                </div>
                                                 <div class="d-flex flex-column justify-content-center">
                                                     <h6 class="mb-0 text-sm"><?= $order['name'] ?></h6>
                                                     <p class="text-xs text-secondary mb-0"><?= $order['email'] ?></p>
@@ -80,21 +83,10 @@ $orders = getAllOrder($type);
                                                 <?= date('d-m-Y', strtotime($order['created_at'])); ?>
                                             </span>
                                         </td>
-                                        <td class="align-middle">
-                                            <?php  
-                                                $id_order = $order['id'];
-                                                if ($order['status'] == 2){
-                                                    echo "<a href='./code.php?order=3&id=$id_order'><span class='badge badge-sm bg-gradient-info'>Delivery</span></a>";
-                                                }else if ($order["status"] == 3){
-                                                    echo "<a href='./code.php?order=4&id=$id_order'><span class='badge badge-sm bg-gradient-success'>Delivered</span></a>";
-                                                }else if ($order["status"] == 4){
-                                                    echo "<span class='badge badge-sm bg-gradient-primary'>Success</span>";
-                                                }
-                                            ?>
-                                        </td>
                                     </tr>
-                                <?php } ?> 
-
+                                <?php 
+                                } 
+                                ?> 
                                 </tbody>
                             </table>
                         </div>

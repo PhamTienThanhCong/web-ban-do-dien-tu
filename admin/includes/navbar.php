@@ -28,16 +28,32 @@ $page= substr($_SERVER['SCRIPT_NAME'], strripos($_SERVER['SCRIPT_NAME'],"/")+1);
                 {
                   echo "Add Product";
                 }
+                else if($page== "user.php")
+                {
+                  echo "User manage";
+                }
+                else if($page== "order.php")
+                {
+                  echo "Order manage";
+                }
+                else if($page== "order-detail.php")
+                {
+                  echo "Order manage / order-detail ";
+                }
+                else if($page== "add-blog.php")
+                {
+                  echo "Add blog ";
+                }
+                else if($page== "blog.php")
+                {
+                  echo "All blog ";
+                }
               ?>
             </li>
           </ol>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-            <div class="input-group input-group-outline">
-              <label class="form-label">Type here...</label>
-              <input type="text" class="form-control">
-            </div>
           </div>
         </div>
       </div>

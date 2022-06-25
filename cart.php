@@ -33,7 +33,7 @@ if (!isset($_SESSION['auth_user']['id'])){
         <div class="container">
             <div class="box">
                 <div class="breadcumb">
-                    <a href="/">Trang chủ</a>
+                    <a href="index.php">Trang chủ</a>
                     <span><i class='bx bxs-chevrons-right'></i></span>
                     <a href="#">Giỏ hàng của tôi</a>
                 </div>
@@ -100,8 +100,8 @@ if (!isset($_SESSION['auth_user']['id'])){
                     </table>
                     <form action="./functions/ordercode.php" method="post">
                         <input type="hidden" name="buy_product" value="true">
-                        <p style="display: inline-block;">Tổng tiền: <?=$total_price?></p>
-                        <button class="btn-buy" style="float: right;">Mua Tất cả sản phẩm trên</button>
+                        <p style="display: block;">Tổng tiền: $<?=$total_price?></p>
+                        <button class="btn-buy" style="float: right;">Đặt hàng</button>
                     </form>
                 <?php } ?>
                 <a href="./cart-status.php">
