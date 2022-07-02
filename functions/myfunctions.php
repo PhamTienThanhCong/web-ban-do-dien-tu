@@ -20,7 +20,7 @@ function totalValue($table){
     $totalValue = mysqli_fetch_array($totalValue);
     return $totalValue['number'];
 }
-function getAllUsers($page = 0){
+function getAllUsers(){
     global $conn;
     $query= "SELECT `users`.*, COUNT(`order_detail`.`id`) AS `total_buy` FROM `users`
             LEFT JOIN `order_detail` ON `users`.`id` = `order_detail`.`user_id`

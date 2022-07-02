@@ -2,7 +2,7 @@
 include("../admin/includes/header.php");
 
 // $users= getAll("users");
-$users = getAllUsers(1);
+$users = getAllUsers();
 
 ?>
 
